@@ -3,7 +3,7 @@ import axios from 'axios';
 function Input(){
   const [task, setTask] = useState()
   const addTodo = ()=>{
-    axios.post('http://localhost:3000/add', {task: task})
+    axios.post('https://todoapp-backend-4wr0.onrender.com/api/todos', {task: task})
     .then(result =>
       location.reload())
     .catch(err => console.log(err))

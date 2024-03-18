@@ -10,13 +10,13 @@ function Head(){
   const [editText, setEditText] = useState("");
   const [editingId, setEditingId] = useState(null);
   useEffect(()=>{
-    axios.get('http://localhost:3000/get')
+    axios.get('https://todoapp-backend-4wr0.onrender.com/api/todos')
     .then(result => setTodos(result.data))
     .catch(err => console.log(err))
   },[])
 
   const todoCheck =(id)=>{
-    axios.put('http://localhost:3000/edit/'+id)
+    axios.put(`https://todoapp-backend-4wr0.onrender.com/api/todos/${id}/complete`)
     .then(result =>{
       location.reload()
     })
@@ -24,7 +24,7 @@ function Head(){
   }
 
   const todoDelete = (id) =>{
-    axios.delete('http://localhost:3000/delete/'+id)
+    axios.delete(`https://todoapp-backend-4wr0.onrender.com/api/todos/${id}`)
     .then(result =>{
       location.reload()
     })
@@ -41,7 +41,7 @@ function Head(){
   }
 
   const updateTodo = (id) => {
-    axios.put(`http://localhost:3000/update/${id}`, { text: editText }) 
+    axios.put(`https://todoapp-backend-4wr0.onrender.com/api/todos/${id}`, { text: editText }) 
       .then(result => {
         const updatedTodos = todos.map(todo => {
           if (todo._id === id) {
